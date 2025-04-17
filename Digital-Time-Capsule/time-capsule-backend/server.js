@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const path = require('path');
+
 require('dotenv').config();
 
 // Initialize Express app
@@ -66,9 +68,12 @@ const sendUnlockEmail = async (email, capsuleContent) => {
 const authRoutes = require('./routes/auth');
 const capsuleRoutes = require('./routes/capsule');
 
-app.use('/api/auth', authRoutes);
-app.use('/api/capsules', capsuleRoutes);
+// Static folder for uploads (if you need direct access)
+app.use('./uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Route mounting
+app.use('/api/auth', authRoutes);
+app.use('/api/capsules', capsuleRoutes);  
 // Health Check
 app.get('/', (req, res) => {
   res.status(200).json({
