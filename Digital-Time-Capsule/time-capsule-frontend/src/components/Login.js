@@ -51,7 +51,7 @@ const Login = () => {
         setLoading(true);
         setError(null);
         
-        const res = await axios.post('http://localhost:5000/api/auth/login', {
+        const res = await axios.post('https://digital-time-capsule.onrender.com/api/auth/login', {
           email: values.email,
           password: values.password
         });

@@ -25,6 +25,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -62,7 +63,7 @@ const Register = () => {
         setLoading(true);
         setError(null);
         
-        await axios.post('http://localhost:5000/api/auth/register', {
+        await axios.post('https://digital-time-capsule.onrender.com/api/auth/register', {
           username: values.username,
           email: values.email,
           password: values.password

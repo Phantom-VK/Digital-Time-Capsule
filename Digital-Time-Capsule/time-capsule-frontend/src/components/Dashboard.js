@@ -42,7 +42,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 // API URL configuration
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://digital-time-capsule.onrender.com/api';
 
 // Component to show countdown to unlock date
 const CountdownTimer = ({ unlockDate }) => {
