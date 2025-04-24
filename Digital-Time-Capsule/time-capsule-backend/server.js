@@ -66,10 +66,16 @@ const sendUnlockEmail = async (email, capsuleContent) => {
 
 // Routes
 const authRoutes = require('./routes/auth');
+console.log('Auth routes loaded:', authRoutes); 
 const capsuleRoutes = require('./routes/capsule');
 
 // Static folder for uploads (if you need direct access)
 app.use('./uploads', express.static(path.join(__dirname, 'uploads')));
+// Add this before your route mounting
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.path}`);
+  next();
+});
 
 // Route mounting
 app.use('/api/auth', authRoutes);
